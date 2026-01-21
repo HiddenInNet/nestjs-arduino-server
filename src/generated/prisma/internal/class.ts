@@ -17,10 +17,10 @@ import type * as Prisma from "./prismaNamespace"
 
 const config: runtime.GetPrismaClientConfig = {
   "previewFeatures": [],
-  "clientVersion": "7.0.0",
-  "engineVersion": "0c19ccc313cf9911a90d99d2ac2eb0280c76c513",
-  "activeProvider": "sqlite",
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ndatasource db {\n  provider = \"sqlite\"\n}\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../src/generated/prisma\"\n}\n\nmodel Data {\n  id          Int      @id @default(autoincrement())\n  temperature Float\n  humidity    Float\n  createdAt   DateTime @default(now())\n}\n",
+  "clientVersion": "7.2.0",
+  "engineVersion": "0c8ef2ce45c83248ab3df073180d5eda9e8be7a3",
+  "activeProvider": "postgresql",
+  "inlineSchema": "datasource db {\n  provider = \"postgresql\"\n}\n\ngenerator client {\n  provider     = \"prisma-client\"\n  output       = \"../src/generated/prisma\"\n  moduleFormat = \"cjs\"\n}\n\nmodel lecturas_sensores {\n  id                Int       @id @default(autoincrement())\n  fecha             DateTime? @default(now()) @db.Timestamp(6)\n  temperatura       Decimal?  @db.Decimal\n  humedad           Decimal?  @db.Decimal\n  luz               Int?\n  vibracion         Int?\n  calidad_aire_ppm  Decimal?  @db.Decimal\n  alcohol_detectado Boolean?\n}\n\nmodel configuraciones {\n  id                      Int      @id @default(autoincrement())\n  umbral_temperatura      Decimal? @db.Decimal\n  umbral_humedad          Decimal? @db.Decimal\n  umbral_luz              Int?\n  umbral_vibracion        Int?\n  umbral_calidad_aire_ppm Decimal? @db.Decimal\n  alerta_alcohol          Boolean?\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -28,7 +28,7 @@ const config: runtime.GetPrismaClientConfig = {
   }
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Data\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"temperature\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"humidity\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"lecturas_sensores\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"fecha\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"temperatura\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"humedad\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"luz\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"vibracion\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"calidad_aire_ppm\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"alcohol_detectado\",\"kind\":\"scalar\",\"type\":\"Boolean\"}],\"dbName\":null},\"configuraciones\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"umbral_temperatura\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"umbral_humedad\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"umbral_luz\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"umbral_vibracion\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"umbral_calidad_aire_ppm\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"alerta_alcohol\",\"kind\":\"scalar\",\"type\":\"Boolean\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 
 async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
   const { Buffer } = await import('node:buffer')
@@ -37,10 +37,10 @@ async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Modul
 }
 
 config.compilerWasm = {
-  getRuntime: async () => await import("@prisma/client/runtime/query_compiler_bg.sqlite.js"),
+  getRuntime: async () => await import("@prisma/client/runtime/query_compiler_bg.postgresql.js"),
 
   getQueryCompilerWasmModule: async () => {
-    const { wasm } = await import("@prisma/client/runtime/query_compiler_bg.sqlite.wasm-base64.js")
+    const { wasm } = await import("@prisma/client/runtime/query_compiler_bg.postgresql.wasm-base64.js")
     return await decodeBase64AsWasm(wasm)
   }
 }
@@ -58,11 +58,11 @@ export interface PrismaClientConstructor {
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Data
-   * const data = await prisma.data.findMany()
+   * // Fetch zero or more Lecturas_sensores
+   * const lecturas_sensores = await prisma.lecturas_sensores.findMany()
    * ```
    * 
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
+   * Read more in our [docs](https://pris.ly/d/client).
    */
 
   new <
@@ -80,11 +80,11 @@ export interface PrismaClientConstructor {
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Data
- * const data = await prisma.data.findMany()
+ * // Fetch zero or more Lecturas_sensores
+ * const lecturas_sensores = await prisma.lecturas_sensores.findMany()
  * ```
  * 
- * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
+ * Read more in our [docs](https://pris.ly/d/client).
  */
 
 export interface PrismaClient<
@@ -113,7 +113,7 @@ export interface PrismaClient<
    * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`
    * ```
    *
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   * Read more in our [docs](https://pris.ly/d/raw-queries).
    */
   $executeRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<number>;
 
@@ -125,7 +125,7 @@ export interface PrismaClient<
    * const result = await prisma.$executeRawUnsafe('UPDATE User SET cool = $1 WHERE email = $2 ;', true, 'user@email.com')
    * ```
    *
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   * Read more in our [docs](https://pris.ly/d/raw-queries).
    */
   $executeRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<number>;
 
@@ -136,7 +136,7 @@ export interface PrismaClient<
    * const result = await prisma.$queryRaw`SELECT * FROM User WHERE id = ${1} OR email = ${'user@email.com'};`
    * ```
    *
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   * Read more in our [docs](https://pris.ly/d/raw-queries).
    */
   $queryRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<T>;
 
@@ -148,7 +148,7 @@ export interface PrismaClient<
    * const result = await prisma.$queryRawUnsafe('SELECT * FROM User WHERE id = $1 OR email = $2;', 1, 'user@email.com')
    * ```
    *
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   * Read more in our [docs](https://pris.ly/d/raw-queries).
    */
   $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>;
 
@@ -175,14 +175,24 @@ export interface PrismaClient<
   }>>
 
       /**
-   * `prisma.data`: Exposes CRUD operations for the **Data** model.
+   * `prisma.lecturas_sensores`: Exposes CRUD operations for the **lecturas_sensores** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Data
-    * const data = await prisma.data.findMany()
+    * // Fetch zero or more Lecturas_sensores
+    * const lecturas_sensores = await prisma.lecturas_sensores.findMany()
     * ```
     */
-  get data(): Prisma.DataDelegate<ExtArgs, { omit: OmitOpts }>;
+  get lecturas_sensores(): Prisma.lecturas_sensoresDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.configuraciones`: Exposes CRUD operations for the **configuraciones** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Configuraciones
+    * const configuraciones = await prisma.configuraciones.findMany()
+    * ```
+    */
+  get configuraciones(): Prisma.configuracionesDelegate<ExtArgs, { omit: OmitOpts }>;
 }
 
 export function getPrismaClientClass(): PrismaClientConstructor {

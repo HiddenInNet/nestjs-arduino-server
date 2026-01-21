@@ -51,7 +51,8 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Data: 'Data'
+  lecturas_sensores: 'lecturas_sensores',
+  configuraciones: 'configuraciones'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -61,20 +62,40 @@ export type ModelName = (typeof ModelName)[keyof typeof ModelName]
  */
 
 export const TransactionIsolationLevel = {
+  ReadUncommitted: 'ReadUncommitted',
+  ReadCommitted: 'ReadCommitted',
+  RepeatableRead: 'RepeatableRead',
   Serializable: 'Serializable'
 } as const
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const DataScalarFieldEnum = {
+export const Lecturas_sensoresScalarFieldEnum = {
   id: 'id',
-  temperature: 'temperature',
-  humidity: 'humidity',
-  createdAt: 'createdAt'
+  fecha: 'fecha',
+  temperatura: 'temperatura',
+  humedad: 'humedad',
+  luz: 'luz',
+  vibracion: 'vibracion',
+  calidad_aire_ppm: 'calidad_aire_ppm',
+  alcohol_detectado: 'alcohol_detectado'
 } as const
 
-export type DataScalarFieldEnum = (typeof DataScalarFieldEnum)[keyof typeof DataScalarFieldEnum]
+export type Lecturas_sensoresScalarFieldEnum = (typeof Lecturas_sensoresScalarFieldEnum)[keyof typeof Lecturas_sensoresScalarFieldEnum]
+
+
+export const ConfiguracionesScalarFieldEnum = {
+  id: 'id',
+  umbral_temperatura: 'umbral_temperatura',
+  umbral_humedad: 'umbral_humedad',
+  umbral_luz: 'umbral_luz',
+  umbral_vibracion: 'umbral_vibracion',
+  umbral_calidad_aire_ppm: 'umbral_calidad_aire_ppm',
+  alerta_alcohol: 'alerta_alcohol'
+} as const
+
+export type ConfiguracionesScalarFieldEnum = (typeof ConfiguracionesScalarFieldEnum)[keyof typeof ConfiguracionesScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -83,4 +104,12 @@ export const SortOrder = {
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 

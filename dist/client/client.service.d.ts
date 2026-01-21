@@ -4,8 +4,12 @@ export declare class ClientService {
     constructor(prisma: PrismaService);
     findAllData(): import("../generated/prisma/internal/prismaNamespace").PrismaPromise<{
         id: number;
-        temperature: number;
-        humidity: number;
-        createdAt: Date;
+        fecha: Date | null;
+        temperatura: import("@prisma/client-runtime-utils").Decimal | null;
+        humedad: import("@prisma/client-runtime-utils").Decimal | null;
+        luz: number | null;
+        vibracion: number | null;
+        calidad_aire_ppm: import("@prisma/client-runtime-utils").Decimal | null;
+        alcohol_detectado: boolean | null;
     }[]>;
 }

@@ -17,7 +17,7 @@ let ClientService = class ClientService {
         this.prisma = prisma;
     }
     findAllData() {
-        return this.prisma.data.findMany();
+        return this.prisma.lecturas_sensores.findMany();
     }
 };
 exports.ClientService = ClientService;

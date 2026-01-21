@@ -18,7 +18,12 @@ export { Prisma }
 export * as $Enums from './enums'
 export * from './enums';
 /**
- * Model Data
+ * Model lecturas_sensores
  * 
  */
-export type Data = Prisma.DataModel
+export type lecturas_sensores = Prisma.lecturas_sensoresModel
+/**
+ * Model configuraciones
+ * 
+ */
+export type configuraciones = Prisma.configuracionesModel

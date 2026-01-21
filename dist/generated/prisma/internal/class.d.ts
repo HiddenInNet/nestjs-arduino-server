@@ -28,7 +28,10 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
     $extends: runtime.Types.Extensions.ExtendsHook<"extends", Prisma.TypeMapCb<OmitOpts>, ExtArgs, runtime.Types.Utils.Call<Prisma.TypeMapCb<OmitOpts>, {
         extArgs: ExtArgs;
     }>>;
-    get data(): Prisma.DataDelegate<ExtArgs, {
+    get lecturas_sensores(): Prisma.lecturas_sensoresDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get configuraciones(): Prisma.configuracionesDelegate<ExtArgs, {
         omit: OmitOpts;
     }>;
 }

@@ -6,6 +6,6 @@ export class ClientService {
   constructor(private prisma: PrismaService) {}
 
   findAllData() {
-    return this.prisma.data.findMany();
+    return this.prisma.lecturas_sensores.findMany();
   }
 }

@@ -27,18 +27,23 @@ export * from "./enums"
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Data
- * const data = await prisma.data.findMany()
+ * // Fetch zero or more Lecturas_sensores
+ * const lecturas_sensores = await prisma.lecturas_sensores.findMany()
  * ```
  * 
- * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
+ * Read more in our [docs](https://pris.ly/d/client).
  */
 export const PrismaClient = $Class.getPrismaClientClass()
 export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts extends Prisma.PrismaClientOptions["omit"] = Prisma.PrismaClientOptions["omit"], ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = $Class.PrismaClient<LogOpts, OmitOpts, ExtArgs>
 export { Prisma }
 
 /**
- * Model Data
+ * Model lecturas_sensores
  * 
  */
-export type Data = Prisma.DataModel
+export type lecturas_sensores = Prisma.lecturas_sensoresModel
+/**
+ * Model configuraciones
+ * 
+ */
+export type configuraciones = Prisma.configuracionesModel

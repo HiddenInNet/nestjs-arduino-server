@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.defineExtension = exports.SortOrder = exports.DataScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.prismaVersion = exports.getExtensionContext = exports.Decimal = exports.Sql = exports.raw = exports.join = exports.empty = exports.sql = exports.PrismaClientValidationError = exports.PrismaClientInitializationError = exports.PrismaClientRustPanicError = exports.PrismaClientUnknownRequestError = exports.PrismaClientKnownRequestError = void 0;
+exports.defineExtension = exports.NullsOrder = exports.SortOrder = exports.ConfiguracionesScalarFieldEnum = exports.Lecturas_sensoresScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.prismaVersion = exports.getExtensionContext = exports.Decimal = exports.Sql = exports.raw = exports.join = exports.empty = exports.sql = exports.PrismaClientValidationError = exports.PrismaClientInitializationError = exports.PrismaClientRustPanicError = exports.PrismaClientUnknownRequestError = exports.PrismaClientKnownRequestError = void 0;
 const runtime = require("@prisma/client/runtime/client");
 exports.PrismaClientKnownRequestError = runtime.PrismaClientKnownRequestError;
 exports.PrismaClientUnknownRequestError = runtime.PrismaClientUnknownRequestError;
@@ -15,8 +15,8 @@ exports.Sql = runtime.Sql;
 exports.Decimal = runtime.Decimal;
 exports.getExtensionContext = runtime.Extensions.getExtensionContext;
 exports.prismaVersion = {
-    client: "7.0.0",
-    engine: "0c19ccc313cf9911a90d99d2ac2eb0280c76c513"
+    client: "7.2.0",
+    engine: "0c8ef2ce45c83248ab3df073180d5eda9e8be7a3"
 };
 exports.NullTypes = {
     DbNull: runtime.NullTypes.DbNull,
@@ -27,20 +27,41 @@ exports.DbNull = runtime.DbNull;
 exports.JsonNull = runtime.JsonNull;
 exports.AnyNull = runtime.AnyNull;
 exports.ModelName = {
-    Data: 'Data'
+    lecturas_sensores: 'lecturas_sensores',
+    configuraciones: 'configuraciones'
 };
 exports.TransactionIsolationLevel = runtime.makeStrictEnum({
+    ReadUncommitted: 'ReadUncommitted',
+    ReadCommitted: 'ReadCommitted',
+    RepeatableRead: 'RepeatableRead',
     Serializable: 'Serializable'
 });
-exports.DataScalarFieldEnum = {
+exports.Lecturas_sensoresScalarFieldEnum = {
     id: 'id',
-    temperature: 'temperature',
-    humidity: 'humidity',
-    createdAt: 'createdAt'
+    fecha: 'fecha',
+    temperatura: 'temperatura',
+    humedad: 'humedad',
+    luz: 'luz',
+    vibracion: 'vibracion',
+    calidad_aire_ppm: 'calidad_aire_ppm',
+    alcohol_detectado: 'alcohol_detectado'
+};
+exports.ConfiguracionesScalarFieldEnum = {
+    id: 'id',
+    umbral_temperatura: 'umbral_temperatura',
+    umbral_humedad: 'umbral_humedad',
+    umbral_luz: 'umbral_luz',
+    umbral_vibracion: 'umbral_vibracion',
+    umbral_calidad_aire_ppm: 'umbral_calidad_aire_ppm',
+    alerta_alcohol: 'alerta_alcohol'
 };
 exports.SortOrder = {
     asc: 'asc',
     desc: 'desc'
+};
+exports.NullsOrder = {
+    first: 'first',
+    last: 'last'
 };
 exports.defineExtension = runtime.Extensions.defineExtension;
 //# sourceMappingURL=prismaNamespace.js.map

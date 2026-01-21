@@ -1,3 +1,3 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-//# sourceMappingURL=Data.js.map
+//# sourceMappingURL=lecturas_sensores.js.map

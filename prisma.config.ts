@@ -5,6 +5,6 @@ import { defineConfig } from 'prisma/config';
 export default defineConfig({
   schema: 'prisma/schema.prisma',
   datasource: {
-    url: 'file:./dev.db',
+    url: 'postgresql://postgres:root@100.111.111.46:5432/proyecto_iot?schema=public',
   },
 });

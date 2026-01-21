@@ -19,43 +19,6 @@ let AppService = class AppService {
     getHello() {
         return 'Hello World!';
     }
-    async saveData(data) {
-        try {
-            const num = await this.prisma.data.count();
-            if (num >= 20) {
-                const oldestRecords = await this.prisma.data.findMany({
-                    take: 10,
-                    orderBy: {
-                        createdAt: 'asc',
-                    },
-                    select: {
-                        id: true,
-                    },
-                });
-                const oldestIds = oldestRecords.map((record) => record.id);
-                if (oldestIds.length > 0) {
-                    await this.prisma.data.deleteMany({
-                        where: {
-                            id: {
-                                in: oldestIds,
-                            },
-                        },
-                    });
-                    console.log(`Eliminados ${oldestIds.length} registros antiguos.`);
-                }
-            }
-            await this.prisma.data.create({
-                data: {
-                    temperature: data.temperature,
-                    humidity: data.humidity,
-                },
-            });
-        }
-        catch (error) {
-            console.error('Error al guardar en la base de datos:', error);
-            throw new common_1.InternalServerErrorException('Error al guardar los datos.');
-        }
-    }
 };
 exports.AppService = AppService;
 exports.AppService = AppService = __decorate([

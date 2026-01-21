@@ -1,21 +1,30 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+generator client {
+  provider     = "prisma-client" // Nota: La doc de Nest usa "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
 }
 
-generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+model lecturas_sensores {
+  id                Int       @id @default(autoincrement())
+  fecha             DateTime? @default(now()) @db.Timestamp(6)
+  temperatura       Decimal?  @db.Decimal
+  humedad           Decimal?  @db.Decimal
+  luz               Int?
+  vibracion         Int?
+  calidad_aire_ppm  Decimal?  @db.Decimal
+  alcohol_detectado Boolean?
 }
 
-model Data {
-  id          Int      @id @default(autoincrement())
-  temperature Float
-  humidity    Float
-  createdAt   DateTime @default(now())
+model configuraciones {
+  id                     Int      @id @default(autoincrement())
+  umbral_temperatura     Decimal? @db.Decimal
+  umbral_humedad         Decimal? @db.Decimal
+  umbral_luz             Int?
+  umbral_vibracion       Int?
+  umbral_calidad_aire_ppm Decimal? @db.Decimal
+  alerta_alcohol         Boolean?
 }

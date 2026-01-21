@@ -80,12 +80,12 @@ export type PrismaVersion = {
 }
 
 /**
- * Prisma Client JS version: 7.0.0
- * Query Engine version: 0c19ccc313cf9911a90d99d2ac2eb0280c76c513
+ * Prisma Client JS version: 7.2.0
+ * Query Engine version: 0c8ef2ce45c83248ab3df073180d5eda9e8be7a3
  */
 export const prismaVersion: PrismaVersion = {
-  client: "7.0.0",
-  engine: "0c19ccc313cf9911a90d99d2ac2eb0280c76c513"
+  client: "7.2.0",
+  engine: "0c8ef2ce45c83248ab3df073180d5eda9e8be7a3"
 }
 
 /**
@@ -384,7 +384,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  Data: 'Data'
+  lecturas_sensores: 'lecturas_sensores',
+  configuraciones: 'configuraciones'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -400,81 +401,155 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "data"
+    modelProps: "lecturas_sensores" | "configuraciones"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
-    Data: {
-      payload: Prisma.$DataPayload<ExtArgs>
-      fields: Prisma.DataFieldRefs
+    lecturas_sensores: {
+      payload: Prisma.$lecturas_sensoresPayload<ExtArgs>
+      fields: Prisma.lecturas_sensoresFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.DataFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataPayload> | null
+          args: Prisma.lecturas_sensoresFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$lecturas_sensoresPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.DataFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataPayload>
+          args: Prisma.lecturas_sensoresFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$lecturas_sensoresPayload>
         }
         findFirst: {
-          args: Prisma.DataFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataPayload> | null
+          args: Prisma.lecturas_sensoresFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$lecturas_sensoresPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.DataFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataPayload>
+          args: Prisma.lecturas_sensoresFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$lecturas_sensoresPayload>
         }
         findMany: {
-          args: Prisma.DataFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataPayload>[]
+          args: Prisma.lecturas_sensoresFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$lecturas_sensoresPayload>[]
         }
         create: {
-          args: Prisma.DataCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataPayload>
+          args: Prisma.lecturas_sensoresCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$lecturas_sensoresPayload>
         }
         createMany: {
-          args: Prisma.DataCreateManyArgs<ExtArgs>
+          args: Prisma.lecturas_sensoresCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.DataCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataPayload>[]
+          args: Prisma.lecturas_sensoresCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$lecturas_sensoresPayload>[]
         }
         delete: {
-          args: Prisma.DataDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataPayload>
+          args: Prisma.lecturas_sensoresDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$lecturas_sensoresPayload>
         }
         update: {
-          args: Prisma.DataUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataPayload>
+          args: Prisma.lecturas_sensoresUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$lecturas_sensoresPayload>
         }
         deleteMany: {
-          args: Prisma.DataDeleteManyArgs<ExtArgs>
+          args: Prisma.lecturas_sensoresDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.DataUpdateManyArgs<ExtArgs>
+          args: Prisma.lecturas_sensoresUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.DataUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataPayload>[]
+          args: Prisma.lecturas_sensoresUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$lecturas_sensoresPayload>[]
         }
         upsert: {
-          args: Prisma.DataUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataPayload>
+          args: Prisma.lecturas_sensoresUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$lecturas_sensoresPayload>
         }
         aggregate: {
-          args: Prisma.DataAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateData>
+          args: Prisma.Lecturas_sensoresAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLecturas_sensores>
         }
         groupBy: {
-          args: Prisma.DataGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.DataGroupByOutputType>[]
+          args: Prisma.lecturas_sensoresGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Lecturas_sensoresGroupByOutputType>[]
         }
         count: {
-          args: Prisma.DataCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.DataCountAggregateOutputType> | number
+          args: Prisma.lecturas_sensoresCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Lecturas_sensoresCountAggregateOutputType> | number
+        }
+      }
+    }
+    configuraciones: {
+      payload: Prisma.$configuracionesPayload<ExtArgs>
+      fields: Prisma.configuracionesFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.configuracionesFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$configuracionesPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.configuracionesFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$configuracionesPayload>
+        }
+        findFirst: {
+          args: Prisma.configuracionesFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$configuracionesPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.configuracionesFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$configuracionesPayload>
+        }
+        findMany: {
+          args: Prisma.configuracionesFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$configuracionesPayload>[]
+        }
+        create: {
+          args: Prisma.configuracionesCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$configuracionesPayload>
+        }
+        createMany: {
+          args: Prisma.configuracionesCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.configuracionesCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$configuracionesPayload>[]
+        }
+        delete: {
+          args: Prisma.configuracionesDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$configuracionesPayload>
+        }
+        update: {
+          args: Prisma.configuracionesUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$configuracionesPayload>
+        }
+        deleteMany: {
+          args: Prisma.configuracionesDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.configuracionesUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.configuracionesUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$configuracionesPayload>[]
+        }
+        upsert: {
+          args: Prisma.configuracionesUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$configuracionesPayload>
+        }
+        aggregate: {
+          args: Prisma.ConfiguracionesAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateConfiguraciones>
+        }
+        groupBy: {
+          args: Prisma.configuracionesGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ConfiguracionesGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.configuracionesCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ConfiguracionesCountAggregateOutputType> | number
         }
       }
     }
@@ -508,20 +583,40 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
  */
 
 export const TransactionIsolationLevel = runtime.makeStrictEnum({
+  ReadUncommitted: 'ReadUncommitted',
+  ReadCommitted: 'ReadCommitted',
+  RepeatableRead: 'RepeatableRead',
   Serializable: 'Serializable'
 } as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const DataScalarFieldEnum = {
+export const Lecturas_sensoresScalarFieldEnum = {
   id: 'id',
-  temperature: 'temperature',
-  humidity: 'humidity',
-  createdAt: 'createdAt'
+  fecha: 'fecha',
+  temperatura: 'temperatura',
+  humedad: 'humedad',
+  luz: 'luz',
+  vibracion: 'vibracion',
+  calidad_aire_ppm: 'calidad_aire_ppm',
+  alcohol_detectado: 'alcohol_detectado'
 } as const
 
-export type DataScalarFieldEnum = (typeof DataScalarFieldEnum)[keyof typeof DataScalarFieldEnum]
+export type Lecturas_sensoresScalarFieldEnum = (typeof Lecturas_sensoresScalarFieldEnum)[keyof typeof Lecturas_sensoresScalarFieldEnum]
+
+
+export const ConfiguracionesScalarFieldEnum = {
+  id: 'id',
+  umbral_temperatura: 'umbral_temperatura',
+  umbral_humedad: 'umbral_humedad',
+  umbral_luz: 'umbral_luz',
+  umbral_vibracion: 'umbral_vibracion',
+  umbral_calidad_aire_ppm: 'umbral_calidad_aire_ppm',
+  alerta_alcohol: 'alerta_alcohol'
+} as const
+
+export type ConfiguracionesScalarFieldEnum = (typeof ConfiguracionesScalarFieldEnum)[keyof typeof ConfiguracionesScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -530,6 +625,14 @@ export const SortOrder = {
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
 
@@ -546,9 +649,9 @@ export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'In
 
 
 /**
- * Reference to a field of type 'Float'
+ * Reference to a field of type 'Int[]'
  */
-export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
 
 
@@ -556,6 +659,48 @@ export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, '
  * Reference to a field of type 'DateTime'
  */
 export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime[]'
+ */
+export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Decimal'
+ */
+export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+/**
+ * Reference to a field of type 'Decimal[]'
+ */
+export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Boolean'
+ */
+export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+/**
+ * Reference to a field of type 'Float'
+ */
+export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+/**
+ * Reference to a field of type 'Float[]'
+ */
+export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
 
 /**
@@ -607,7 +752,7 @@ export type PrismaClientOptions = ({
    *  { emit: 'stdout', level: 'error' }
    * 
    * ```
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/logging#the-log-option).
+   * Read more in our [docs](https://pris.ly/d/logging).
    */
   log?: (LogLevel | LogDefinition)[]
   /**
@@ -635,9 +780,26 @@ export type PrismaClientOptions = ({
    * ```
    */
   omit?: GlobalOmitConfig
+  /**
+   * SQL commenter plugins that add metadata to SQL queries as comments.
+   * Comments follow the sqlcommenter format: https://google.github.io/sqlcommenter/
+   * 
+   * @example
+   * ```
+   * const prisma = new PrismaClient({
+   *   adapter,
+   *   comments: [
+   *     traceContext(),
+   *     queryInsights(),
+   *   ],
+   * })
+   * ```
+   */
+  comments?: runtime.SqlCommenterPlugin[]
 }
 export type GlobalOmitConfig = {
-  data?: Prisma.DataOmit
+  lecturas_sensores?: Prisma.lecturas_sensoresOmit
+  configuraciones?: Prisma.configuracionesOmit
 }
 
 /* Types for Logging */
