@@ -4,7 +4,8 @@ import { defineConfig } from 'prisma/config';
 
 export default defineConfig({
   schema: 'prisma/schema.prisma',
-  datasource: {
-    url: 'postgresql://postgres:root@100.111.111.46:5432/proyecto_iot?schema=public',
-  },
+  // datasource: {
+  //   // url: 'postgresql://postgres:root@100.111.111.46:5432/proyecto_iot?schema=public',
+  //   url: 'postgresql://postgres:root@127.0.0.1:5432/datos-estacion?schema=public',
+  // },
 });

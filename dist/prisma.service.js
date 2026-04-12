@@ -14,10 +14,11 @@ const common_1 = require("@nestjs/common");
 const client_1 = require("./generated/prisma/client");
 const adapter_pg_1 = require("@prisma/adapter-pg");
 const pg_1 = require("pg");
+const config_1 = require("./config");
 let PrismaService = class PrismaService extends client_1.PrismaClient {
     constructor() {
         const pool = new pg_1.Pool({
-            connectionString: 'postgresql://postgres:root@100.111.111.46:5432/proyecto_iot?schema=public',
+            connectionString: config_1.envs.databaseUrl,
         });
         const adapter = new adapter_pg_1.PrismaPg(pool);
         super({ adapter });
